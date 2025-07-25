@@ -19,3 +19,7 @@ spring:
     properties:
       hibernate:
         default_schema: auth
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600
