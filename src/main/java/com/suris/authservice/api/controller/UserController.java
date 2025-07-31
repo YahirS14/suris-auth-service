@@ -1,6 +1,8 @@
 package com.suris.authservice.api.controller;
 
 import com.suris.authservice.api.dto.model.UserDto;
+import com.suris.authservice.api.dto.model.UserLoginDTO;
+import com.suris.authservice.api.dto.response.UserLoginResponse;
 import com.suris.authservice.api.dto.response.UserResponse;
 import com.suris.authservice.api.response.ApiSuccessResponse;
 import com.suris.authservice.application.service.UserService;
@@ -24,5 +26,12 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new ApiSuccessResponse<>(201, "User registered successfully successfully", userService.register(userDto)));
+    }
+
+    @PostMapping("/v1/users/login")
+    public ResponseEntity<ApiSuccessResponse<UserLoginResponse>> loginUser(@Valid @RequestBody UserLoginDTO userLoginDto) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ApiSuccessResponse<>(200, "User logged in successfully", userService.login(userLoginDto)));
     }
 }

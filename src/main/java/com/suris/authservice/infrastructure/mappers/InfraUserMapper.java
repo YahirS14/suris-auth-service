@@ -14,6 +14,11 @@ public interface InfraUserMapper {
     @Mapping(target = "password", source = "password.hashedPassword")
     UserEntity toEntity(UserModel userModel);
 
+    @Mapping(target = "id", expression = "java(new UserId(entity.getId()))")
+    @Mapping(target = "email", expression = "java(new Email(entity.getEmail()))")
+    @Mapping(target = "password", expression = "java(Password.fromHashed(entity.getPassword()))")
+    UserModel toDomain(UserEntity entity);
+
     @Mapping(target = "id", expression = "java(userEntity.getId().toString())")
     @Mapping(target = "role", expression = "java(userEntity.getRole().name())")
     @Mapping(target = "createdAt", expression = "java(userEntity.getCreatedAt().toString())")

@@ -9,4 +9,6 @@ public interface UserRepository {
 
     boolean existsByEmail(String email);
 
+    UserModel findByEmail(String email);
+
 }

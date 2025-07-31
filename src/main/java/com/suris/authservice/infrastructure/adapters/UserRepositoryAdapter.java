@@ -32,4 +32,9 @@ public class UserRepositoryAdapter implements UserRepository {
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+
+    @Override
+    public UserModel findByEmail(String email) {
+        return userRepository.findByEmail(email).map(userMapper::toDomain).orElse(null);
+    }
 }
