@@ -1,7 +1,5 @@
 server:
   port: 1401
-  servlet:
-    context-path: /api
 spring:
   application:
     name: "suris-auth-service"
